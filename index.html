@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Eng Text to Voice</title>
+  </head>
+  <body>
+    <!-- <main class="grid place-item-center">
+            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Convert</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                </div>
+                <textarea type="search" id="input-text" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Input English Text to Convert in Speech" required></textarea>
+                <button type="text" id="btn" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Convert</button>
+            </div>
+
+    </main>
+
+
+    <script>
+        document.getElementById("btn").addEventListener("click",()=>{
+            const inputText = document.getElementById("input-text").value.toString();
+            console.log(inputText)
+            const utterance = new SpeechSynthesisUtterance(inputText);
+            window.speechSynthesis.speak(utterance);
+
+        })
+    </script> -->
+
+    <main class="grid place-item-center">
+      <label
+        for="default-search"
+        class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+        >Convert</label
+      >
+      <div class="relative">
+        <div
+          class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+          ></div>
+          <select
+            id="language-select"
+            class="mt-2 block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            <option value="en-US">English (US)</option>
+            <option value="bn-BD">Bangla (Bengali)</option>
+            <option value="ar">Arabic</option>
+          </select>
+        <textarea
+          type="search"
+          id="input-text"
+          class="block p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Input Text to Convert in Speech" cols="90" rows="10"
+          required
+        ></textarea>
+        <button
+          type="text"
+          id="btn"
+          class="mt-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          Convert
+        </button>
+      </div>
+    </main>
+
+    <script>
+        document.getElementById("btn").addEventListener("click", () => {
+            const inputText = document.getElementById("input-text").value.toString();
+            const selectedLang = document.getElementById("language-select").value;
+
+            const utterance = new SpeechSynthesisUtterance(inputText);
+            utterance.lang = selectedLang;
+
+            window.speechSynthesis.speak(utterance);
+        });
+
+        speechSynthesis.getVoices().forEach(voice => console.log(voice.lang, voice.name));
+    </script>
+  </body>
+</html>
